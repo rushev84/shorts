@@ -1,17 +1,17 @@
 <?php
 
 // ORP - Open Closed Principle
+// Мы можем расширять функционал классов, не меняя их исходного кода.
+// Пример ниже очень кривой - много повторяющегося кода и условных конструкций.
 
 class Dev
 {
     public $type;
-
     public $cost;
 
     public function __construct($cost)
     {
         $this->type = 'dev';
-
         $this->cost = $cost;
     }
 }
@@ -19,13 +19,11 @@ class Dev
 class Manager
 {
     public $type;
-
     public $cost;
 
     public function __construct($cost)
     {
         $this->type = 'manager';
-
         $this->cost = $cost;
     }
 }
@@ -33,13 +31,11 @@ class Manager
 class ProjectManager
 {
     public $type;
-
     public $cost;
 
     public function __construct($cost)
     {
         $this->type = 'project_manager';
-
         $this->cost = $cost;
     }
 }
