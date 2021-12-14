@@ -1,0 +1,5 @@
+Declares a new variable and initializes it with the selected expression --- Ctrl+Alt+V
+Inline a variable --- Ctrl+Alt+N
+
+Rename file --- Shift+F6
+Open the list of recent files --- Ctrl+E

@@ -1,0 +1,23 @@
+--make controller
+TERM: php artisan make:controller NameController
+(folder app->Http->Controllers)
+
+Logic of work:
+Data sends to file 'web.php', then called controller 'ContactController' and its inner function 'submit()'.
+In file 'ContactController.php' is called file 'ContactRequest.php', and then the errors show in file 'contact.blade.php' via loop.
+
+--make validation
+TERM: php artisan make:request ContactRequest
+
+--Databases
+file '.env' - settings
+TERM: php artisan make:model Contact -m ('-m' for creating migration file)
+TERM: php artisan migrate
+return steps:
+TERM: php artisan migrate:rollback (cancel last step)
+TERM: php artisan migrate:rollback --step=3 (cancel 3 last steps)
+TERM: php artisan migrate:rollback reset (cancel all steps)
+
+--Cache
+clear cash:
+TERM: php artisan config:cache

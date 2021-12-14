@@ -1,0 +1,41 @@
+hh.ru, career.habr.ru, linkedIn
+
+
+Sergey Rushev
+Junior PHP Developer
+
+Profile
+
+I actually set up my career in the domain of front-end development, which eventually brought me into web design in software development companies, both full-time and project-based vocation. My professional responsibilities amounted to creating dynamic web banners (HTML5), video clips, illustrations and HTML coding.
+Now that I understood this domain appeals to me more than design, I have made my mind to get back into development.
+I am looking forward to finding a job in a well-established company with a developed onboarding procedure and a chance to learn from seasoned mentors.
+
+Skills: PHP, SQL, Laravel (basis), JS, HTML, CSS, Git.
+
+Employment History
+
+Motion-designer, banner-maker, illustrator
+Artlu
+Technologies: Adobe products (After Effects, Animate, Photoshop, Illustrator, InDesign) and other graphic programs. I used JS and ActionScript in After Effects and Animate.
+JANUARY 2012 - present time
+
+Frontend-developer
+Burbon.ru
+Technologies: HTML, CSS, JS, JQuery, Bitrix.
+SEPTEMBER 2010 - JANUARY 2012
+
+Frontend-developer
+IP3
+Technologies: HTML, CSS, JS, XSLT.
+SEPTEMBER 2008 - SEPTEMBER 2010
+
+
+Education
+
+Nizhny Novgorod Lobachevsky University
+"Professional programming"
+SEPTEMBER 2007 - MAY 2008
+
+Nizhny Novgorod State Technical University
+"Information systems and technologies"
+SEPTEMBER 2001 — JULY 2007

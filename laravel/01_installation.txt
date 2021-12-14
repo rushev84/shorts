@@ -1,0 +1,41 @@
+Install the composer inside the project (locally).
+getcomposer.org -> Download -> copy command to the terminal
+(if php-errors appear etc. - need to change variables of environment (переменные среды), need to point out the directory with file php.exe, then reboot)
+
+We see composer.phar.
+
+Install Laravel.
+laravel.com -> documentation -> installation
+need to install laravel globally (once).
+TERMINAL: php composer.phar global require laravel/installer
+need to install laravel locally (in project).
+TERMINAL: php composer.phar create-project --prefer-dist laravel/laravel name-of-the-project
+
+artisan is a very useful command.
+TERMINAL: php artisan
+run local server:
+TERMINAL: php artisan serve
+
+----------------------------------------------------------
+
+HOW TO INSTALL SASS
+
+in file 'webpack.mix.js' add:
+    .sass('resources/sass/app.scss', 'public/css');
+in file 'package.json' add (where 'devDependencies'):
+        "sass": "^1.43.2",
+        "sass-loader": "^12.1.0"
+
+New terminal -> project folder
+TERMINAL: npm i
+--data conversion:
+TERMINAL: npm run dev
+--watching changes
+TERMINAL: npm run watch
+
+----------------------------------------------------------
+
+HOW TO INSTALL BOOTSTRAP
+
+https://www.bootstrapcdn.com/
+
