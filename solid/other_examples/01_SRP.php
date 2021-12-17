@@ -3,8 +3,68 @@
 // SRP - single responsibility principle
 // На каждый объект должна быть возложена одна единственная обязанность
 
+// Пример 1
+
+class PostsConverter
+{
+    public $post;
+
+    public function __construct($post)
+    {
+        $this->post = $post;
+    }
+
+    public function toJSON()
+    {
+        return json_encode([
+            $this->post->getTitle(),
+            $this->post->getContent()
+        ]);
+    }
+
+    public function toXML()
+    {
+        return '
+        <post>
+            <title>' . $this->post->getTitle() . '</title>
+            <content>' . $this->post->getContent() . '</content>
+        </post>
+        ';
+    }
+}
+
+class Post
+{
+    private $title;
+    private $content;
+
+    public function __construct($title, $content)
+    {
+        $this->title = $title;
+        $this->content = $content;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+}
+
+$post = new Post('Hello world', 'This is my first post');
+
+$post_json = new PostsConverter($post);
 
 
+var_dump($post_json->toJSON());
+var_dump($post_json->toXML());
+
+// Пример 2
 
 // Рассмотрим следующее описание класса для представления заказа в интернет-магазине:
 

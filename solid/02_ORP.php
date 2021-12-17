@@ -1,76 +1,109 @@
 <?php
 
 // ORP - Open Closed Principle
-// Мы можем расширять функционал классов, не меняя их исходного кода.
-// Пример ниже очень кривой - много повторяющегося кода и условных конструкций.
 
-class Dev
+/*
+ Данный принцип гласит — "программные сущности должны быть открыты для расширения, но закрыты для модификации". На более простых словах это можно описать так — все классы, функции и т.д. должны проектироваться так, чтобы для изменения их поведения, нам не нужно было изменять их исходный код.
+Рассмотри на примере класса OrderRepository
+ */
+
+class OrderRepository
 {
-    public $type;
-    public $cost;
-
-    public function __construct($cost)
+    public function load($orderID)
     {
-        $this->type = 'dev';
-        $this->cost = $cost;
+        $pdo = new PDO($this->config->getDsn(), $this->config->getDBUser(), $this->config->getDBPassword());
+        $statement = $pdo->prepare('SELECT * FROM `orders` WHERE id=:id');
+        $statement->execute(array(':id' => $orderID));
+        return $query->fetchObject('Order');
+    }
+
+    public function save($order)
+    {/*...*/
+    }
+
+    public function update($order)
+    {/*...*/
+    }
+
+    public function delete($order)
+    {/*...*/
     }
 }
 
-class Manager
-{
-    public $type;
-    public $cost;
+/*
+ * В данном случае хранилищем у нас является база данных. например, MySQL. Но вдруг мы захотели подгружать наши данные о заказах, например, через API стороннего сервера, который, допустим, берёт данные из 1С. Какие изменения нам надо будет внести? Есть несколько вариантов, например, непосредственно изменить методы класса OrderRepository, но этот не соответствует принципу открытости/закрытости, так как класс закрыт для модификации, да и внесение изменений в уже хорошо работающий класс нежелательно. Значит, можно наследоваться от класса OrderRepository и переопределить все методы, но это решение не самое лучше, так как при добавлении метода в OrderRepository нам придётся добавить аналогичные методы во все его наследники. Поэтому для выполнения принципа открытости/закрытости лучше применить следующее решение — создать интерфейc IOrderSource, который будет реализовываться соответствующими классами MySQLOrderSource, ApiOrderSource и так далее.
+ */
 
-    public function __construct($cost)
+class OrderRepository2
+{
+    private $source;
+
+    public function setSource(IOrderSource $source)
     {
-        $this->type = 'manager';
-        $this->cost = $cost;
+        $this->source = $source;
+    }
+
+    public function load($orderID)
+    {
+        return $this->source->load($orderID);
+    }
+
+    public function save($order)
+    {/*...*/
+    }
+
+    public function update($order)
+    {/*...*/
     }
 }
 
-class ProjectManager
+interface IOrderSource
 {
-    public $type;
-    public $cost;
+    public function load($orderID);
 
-    public function __construct($cost)
+    public function save($order);
+
+    public function update($order);
+
+    public function delete($order);
+}
+
+class MySQLOrderSource implements IOrderSource
+{
+    public function load($orderID)
     {
-        $this->type = 'project_manager';
-        $this->cost = $cost;
+    }
+
+    public function save($order)
+    {/*...*/
+    }
+
+    public function update($order)
+    {/*...*/
+    }
+
+    public function delete($order)
+    {/*...*/
     }
 }
 
-class CostsCalculator
+class ApiOrderSource implements IOrderSource
 {
-    public $workers = [];
-
-    public function __construct($workers)
+    public function load($orderID)
     {
-        $this->workers = $workers;
     }
 
-    public function sum()
-    {
-        $all_cost = 0;
+    public function save($order)
+    {/*...*/
+    }
 
-        foreach ($this->workers as $worker) {
-            if ($worker->type == 'dev') {
-                $all_cost += $worker->cost * 5;
-            } elseif ($worker->type == 'manager') {
-                $all_cost += $worker->cost * 3;
-            } elseif ($worker->type == 'project_manager') {
-                $all_cost += $worker->cost * 7;
-            }
-        }
+    public function update($order)
+    {/*...*/
+    }
 
-        return $all_cost;
+    public function delete($order)
+    {/*...*/
     }
 }
 
-$calculator = new CostsCalculator([
-    new Dev(4000),
-    new Manager(2000),
-    new ProjectManager(3000)
-]);
-
-echo $calculator->sum();
+// Таким образом, мы можем изменить источник и соответственно поведение для класса OrderRepository, установив нужный нам класс реализующий IOrderSource, без изменения класса OrderRepository
