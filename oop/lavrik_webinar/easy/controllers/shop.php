@@ -7,19 +7,21 @@ class CShop
     public function __construct()
     {
         $this->model = new MArticles();
+        Session::set('test', mt_rand(1, 5));
     }
 
     public function run()
     {
         $articles = $this->model->all();
 
-        echo '<h1>Home page</h1>';
+        echo '<h1>Shop page</h1>';
 
         foreach ($articles as $art) {
             echo "<hr><h2>{$art['title']}</h2>";
         }
 
-        echo "<div>By all courses now!!!! - </div>";
+        $val = Session::slice('test');
+        echo "<div>By all courses now!!!! - $val</div>";
     }
 }
 

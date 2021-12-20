@@ -23,6 +23,8 @@ class Session
             $val = $_SESSION[$name];
             unset($_SESSION[$name]);
         }
+
+        return $val;
     }
 
     protected static function mbStart()
