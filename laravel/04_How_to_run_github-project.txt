@@ -1,0 +1,21 @@
+Скачиваем, распаковываем, запускаем терминал.
+php composer.phar update
+
+Меняем .env.example на .env
+
+php artisan key:generate
+
+Меняем имя db в .env
+
+Меняем
+MAIL_MAILER = smtp
+MAIL_HOST = smtp.gmail.com
+MAIL_PORT = 465
+MAIL_USERNAME=example@gmail.com
+MAIL_PASSWORD =
+MAIL_ENCRYPTION = ssl
+
+Создаем в phpmyadmin новую db
+
+php artisan migrate
+php artisan serve
