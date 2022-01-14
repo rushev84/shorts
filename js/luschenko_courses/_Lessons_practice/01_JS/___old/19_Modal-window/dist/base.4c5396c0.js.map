@@ -1,0 +1,1 @@
+{"version":3,"sources":["base.js"],"names":["$","window"],"mappings":"AAAA,IAAMA,CAAC,GAAG,EAAV;AAEAC,MAAM,CAACD,CAAP,GAAWA,CAAX","file":"base.4c5396c0.js","sourceRoot":"..","sourcesContent":["const $ = {}\r\n\r\nwindow.$ = $\r\n"]}

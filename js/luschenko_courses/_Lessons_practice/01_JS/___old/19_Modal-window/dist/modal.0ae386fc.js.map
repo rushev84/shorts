@@ -1,0 +1,1 @@
+{"version":3,"sources":["plugins/modal.js"],"names":["$","modal"],"mappings":"AAAAA,CAAC,CAACC,KAAF,GAAU,YAAY,CAAE,CAAxB","file":"modal.0ae386fc.js","sourceRoot":"..","sourcesContent":["$.modal = function () {}\r\n"]}

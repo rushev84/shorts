@@ -1,0 +1,12 @@
+html,
+body {
+    font-family: sans-serif;
+}
+
+body {
+    margin: 20px;
+}
+
+.out select {
+    width: 280px;
+}

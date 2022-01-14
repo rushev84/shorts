@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JSExpert - Tic Tac Toe</title>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <nav class="navbar box is-paddingless is-marginless" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://www.jsexpert.net/" target="_blank">
+                <img height="32" src="https://www.jsexpert.net/wp-content/uploads/2017/12/Layer-3.png" alt="Made with JSexpert">
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+                <a class="navbar-item" href="https://www.jsexpert.net/courses/" target="_blank">
+                    КУРСЫ
+                </a>
+
+                <a class="navbar-item" href="https://www.jsexpert.net/vebinars/" target="_blank">
+                    ВЕБИНАРЫ
+                </a>
+
+                <a class="navbar-item" href="https://www.jsexpert.net/?register=https://www.jsexpert.net/courses/"
+                    target="_blank">
+                    РЕГИСТРАЦИЯ
+                </a>
+
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-medium is-light">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-8-desktop is-offset-2-desktop">
+                        <h1 class="title is-2 is-spaced">
+                            <span>JSEXPERT</span> - ОНЛАЙН ШКОЛА ОБУЧЕНИЯ FRONTEND
+                        </h1>
+                        <h2 class="subtitle is-4 has-text-primary">
+                            <span class="has-text-yellow">JAVASCRIPT,</span> <span class="has-text-angular">ANGULAR,</span>
+                            <span class="has-text-node">NODE.JS</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section game-section">
+        <div class="game">
+            <div class="game-info-container">
+                <div class="content is-medium" id="game-info"></div>
+            </div>
+            <div id="game-board">
+                <div class="board-row">
+                    <button class="square" data-index="0:0"></button>
+                    <button class="square" data-index="0:1"></button>
+                    <button class="square" data-index="0:2"></button>
+                </div>
+                <div class="board-row">
+                    <button class="square" data-index="1:0"></button>
+                    <button class="square" data-index="1:1"></button>
+                    <button class="square" data-index="1:2"></button>
+                </div>
+                <div class="board-row">
+                    <button class="square" data-index="2:0"></button>
+                    <button class="square" data-index="2:1"></button>
+                    <button class="square" data-index="2:2"></button>
+                </div>
+            </div>
+            <div class="game-info-container">
+                <button class="button" id="game-restart">Restart game</button>
+            </div>
+
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-desktop is-offset-2-desktop">
+                    <p>
+                        <strong class="has-text-weight-semibold">
+                            <a href="https://www.jsexpert.net/"><span class="is-primary">JSEXPERT</span> - ОНЛАЙН ШКОЛА
+                                ОБУЧЕНИЯ FRONTEND</a>
+                        </strong>
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        <a href="https://www.jsexpert.net/">
+                            <img style="max-height: 100px" src="https://www.jsexpert.net/wp-content/uploads/2017/12/Layer-3.png"
+                                alt="Made with JSexpert">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

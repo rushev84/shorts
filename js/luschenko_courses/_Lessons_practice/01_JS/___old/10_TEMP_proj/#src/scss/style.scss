@@ -1,0 +1,20 @@
+@import 'mixins';
+@import 'fonts';
+
+$fontFamily: 'Raleway', sans-serif;
+$fontSize: 14px;
+
+$maxWidthContainer: 1200;
+
+@import 'null';
+
+._container {
+  width: 100%;
+  max-width: $maxWidthContainer + px;
+  margin: 0 auto;
+  //---Необходимые отступы слева и справа для адаптивности
+  padding: 0px 15px;
+}
+
+@import 'header';
+@import 'footer';

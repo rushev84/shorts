@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>CSS-GENERATOR</title>
+  </head>
+  <body>
+    <h1>CSS GENERATOR</h1>
+    <div class="wrapper-flex">
+      <div class="wrapper">
+        <div class="wrapper-top">
+          <div class="top-left-range">
+            <input type="range" class="input" id="range1" min="0" max="100" value="0" />
+            <div class="result" id="result1">0</div>
+          </div>
+          <div class="top-right-range">
+            <input type="range" class="input" id="range2" min="0" max="100" value="0" />
+            <div class="result" id="result2">0</div>
+          </div>
+        </div>
+        <div class="wrapper-middle">
+          <div id="cube"></div>
+        </div>
+        <div class="wrapper-bottom">
+          <div class="bottom-left-range">
+            <input type="range" class="input" id="range3" min="0" max="100" value="0" />
+            <div class="result" id="result3">0</div>
+          </div>
+          <div class="bottom-right-range">
+            <input type="range" class="input" id="range4" min="0" max="100" value="0" />
+            <div class="result" id="result4">0</div>
+          </div>
+        </div>
+      </div>
+      <div class="total-result">
+        <button id="btn">Вычислить результат</button>
+        <span>border-radius: </span><span id="totalResult"></span>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

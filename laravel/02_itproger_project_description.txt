@@ -1,4 +1,0 @@
-Routing is going between three files - 'home', 'about' and 'contacts'.
-Each file has the same top part - so, it extends the same file named 'app' in folder layout (syntax - extends('layout.app')).
-File 'app' has the directory @yield, and by this directory sections 'title-block' and 'content' (from files 'home', 'about' and 'contacts') are included to the body of 'app'.
-Files 'about' and 'contacts' have sections 'title-block' and 'content', but file 'home' has also section 'aside' which is included to file 'app' (to make it visible for 'home') via directory '@include'. Main body of the 'aside' includes via directory '@parent'. Directory '@show' in 'aside' is needed for showing additional text in file 'home'.

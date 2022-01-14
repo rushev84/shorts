@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/06_PHP_practice.iml" filepath="$PROJECT_DIR$/.idea/06_PHP_practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../OpenServer/domains/test3.ua/.idea/test3.ua.iml" filepath="$PROJECT_DIR$/../../OpenServer/domains/test3.ua/.idea/test3.ua.iml" />
+    </modules>
+  </component>
+</project>

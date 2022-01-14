@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+}
+
+html,
+body {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
+
+p {
+  background: pink;
+}

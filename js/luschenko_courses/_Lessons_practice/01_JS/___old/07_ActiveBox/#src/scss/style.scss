@@ -1,0 +1,443 @@
+@import 'mixins';
+@import 'fonts';
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontFamily: 'Raleway', sans-serif;
+$fontSize: 14px;
+
+//<ПЕРЕМЕННЫЕ>===========================================================================================================
+
+//---По дизайну размер контейнера 1170, но мы его увеличили с учётом отступов в 15px
+$maxWidthContainer: 1200;
+
+//</ПЕРЕМЕННЫЕ>===========================================================================================================
+
+@import 'null';
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+._container {
+  width: 100%;
+  max-width: $maxWidthContainer + px;
+  margin: 0 auto;
+  //---Необходимые отступы слева и справа для адаптивности
+  padding: 0px 15px;
+}
+
+//---Другой вариант сборки - сделать _header.sccs, _body.scss, _footer.scss и подключить css-ки в _head.html.
+//---Скорость загрузки убыстрится. Вопрос - а сгруппируются ли медиа-запросы?
+
+@import 'header';
+@import 'footer';
+
+//</ОСНОВНОЙ БЛОК>====================================================================================================
+
+body {
+  color: #6c7279;
+  //-webkit-font-smoothing: antialiased;
+}
+
+.intro {
+  @include flexbox();
+  flex-direction: column;
+  justify-content: center;
+  height: 750px;
+  padding: 100px 0px 0px 0px;
+  background: #31344e url('../img/intro-bg.jpg') center no-repeat;
+  background-size: cover;
+  &__inner {
+    width: 100%;
+    max-width: 970px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__title {
+    margin: 0px 0px 30px 0px;
+    color: #fff;
+    font-family: 'Open Sans';
+    font-size: 66px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  &__subtitle {
+    margin: 0px 0px 50px 0px;
+    //text style-->
+    color: #ffffff;
+    font-family: Raleway;
+    font-size: 21px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.5;
+    //<--text style
+  }
+}
+
+.btn {
+  display: inline-block;
+  vertical-align: top;
+  padding: 14px 40px;
+  border-radius: 3px;
+  text-align: center;
+
+  color: #ffffff;
+  border: 0;
+  font-family: 'Raleway';
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  transition: background 0.1s linear;
+  &--red {
+    background-color: #e84545;
+  }
+  &:hover {
+    background-color: #c42626;
+  }
+  &--long {
+    min-width: 280px;
+  }
+}
+
+.features {
+  @include flexbox();
+  flex-wrap: wrap;
+  margin: 95px 0px;
+  // .features__item
+  &__item {
+    padding: 0 40px;
+    margin: 25px 0;
+    width: 33.333%;
+    text-align: center;
+  }
+  // .features__icon
+  &__icon {
+    margin: 0px 0px 25px 0px;
+  }
+  // .features__title
+  &__title {
+    margin: 0px 0px 20px 0px;
+    color: #2d3033;
+    font-family: Raleway;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  // .features__text
+  &__text {
+    line-height: 21px;
+  }
+}
+
+.works {
+  @include flexbox();
+  flex-wrap: wrap;
+  // .works__item
+  &__item {
+    width: 25%;
+    height: 350px;
+    //---Не совсем ясно, зачем relative
+    position: relative;
+    //---Скрытие частей картинки, выходящих за пределы флекса
+    overflow: hidden;
+    //---Рамка вокруг флекса
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+
+    //---При наведении блок works__content становится видимым
+    &:hover .works__content {
+      opacity: 1;
+    }
+  }
+  &__photo {
+    position: absolute;
+    //---Выравнивание картинки строго по центру по всем осям
+    top: 50%;
+    left: 50%;
+    @include tr(-50%, -50%, 0);
+
+    //---Картинка снизу
+    z-index: 1;
+
+    //---Занимает всю ширину блока при адаптации
+    min-width: 100%;
+  }
+  // .works__content
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    //Контент сверху картинки
+    z-index: 2;
+
+    //---Контент на всю ширину флекса
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(232, 69, 69, 0.9);
+
+    //---Делаем блок content флекс-контейнером
+    @include flexbox();
+    //---Задаём расположение в нём флексов - по вертикали
+    flex-direction: column;
+    //---Выравниваем флексы по центру флекс-контейнера (в данном случае по вертикали, т.к. flex-direction: column;
+    justify-content: center;
+    //---Выравниванпем флексы по центру по горизонтали
+    text-align: center;
+
+    //---Делаем блок невидимым
+    opacity: 0;
+
+    //---Плавный переход свойства opacity (при наведении)
+    transition: opacity 0.2s linear;
+  }
+  // .works__title
+  &__title {
+    margin: 0px 0px 5px 0px;
+    //TEXT-->
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    //<--TEXT
+  }
+  // .works__text
+  &__text {
+    //TEXT-->
+    color: #ffffff;
+    font-size: 14px;
+    //<--TEXT
+  }
+}
+
+.team {
+  margin: 100px 0px 70px;
+  // .team__inner
+  &__inner {
+    @include flexbox();
+    flex-wrap: wrap;
+
+    margin: 0px -15px;
+  }
+  // .team__item
+  &__item {
+    width: 25%;
+    padding: 0px 15px;
+    margin: 0px 0px 30px 0px;
+  }
+  &__photo {
+    display: block;
+    //---Адаптация фото к любым размерам item
+    max-width: 100%;
+    height: auto;
+
+    margin: 0px 0px 20px 0px;
+  }
+  &__name {
+    margin: 0px 0px 8px 0px;
+    color: #2d3033;
+    font-size: 22px;
+  }
+  &__prof {
+    margin: 0px 0px 15px 0px;
+    color: #e84545;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  &__text {
+    margin: 0px 0px 20px 0px;
+    color: #6c7279;
+    line-height: 21px;
+  }
+}
+
+.social {
+  @include flexbox();
+  &__item {
+    @include flexbox();
+    justify-content: center;
+    align-items: center;
+    margin: 0px 4px 0px 0px;
+
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e8ece8;
+    background-color: #fff;
+    transition: background 0.1s linear;
+
+    &:hover {
+      background-color: #e8ece8;
+      .social__icon {
+        fill: #000;
+      }
+    }
+  }
+
+  &__footer {
+    justify-content: center;
+  }
+
+  &__footer .social__item {
+    background-color: transparent;
+    border-width: 2px;
+    border-color: #fff;
+    border-radius: 2px;
+    &:hover {
+      background-color: #fff;
+    }
+  }
+
+  &__icon {
+    display: block;
+    height: 18px;
+    fill: #c6cacc;
+
+    transition: fill 0.1s linear;
+  }
+
+  &__footer .social__icon {
+    fill: #fff;
+  }
+}
+
+.reviews {
+  background-color: #53354a;
+  //---Чтобы картинки не вылезали за границы блока, если они большие
+  overflow: hidden;
+  // .reviews__item
+  &__item {
+    @include flexbox();
+    flex-wrap: wrap;
+    //---для скрытия картинки в слайдере
+    overflow: hidden;
+  }
+  // .reviews__photo
+  &__photo {
+    width: 50%;
+    height: 500px;
+    position: relative;
+  }
+  &__img {
+    position: absolute;
+    top: 50%;
+    @include tr(0, -50%, 0);
+    right: 0;
+    z-index: 1;
+  }
+  // .reviews__content
+  &__content {
+    @include flexbox();
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    padding: 0px 0px 0px 80px;
+  }
+  &__text {
+    margin: 0px 0px 25px 0px;
+    color: #ffffff;
+    font-family: Cardo;
+    font-size: 36px;
+    line-height: 1.4;
+  }
+  &__author {
+    color: #ffffff;
+    font-family: Raleway;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 21px;
+    text-transform: uppercase;
+  }
+  &__slider {
+    //---чтобы не прыгал слайдер при загрузке страницы
+    height: 500px;
+    overflow: hidden;
+    &.slick-initialized {
+      height: auto;
+    }
+  }
+  .slick-dots {
+    @include flexbox();
+    justify-content: center;
+
+    padding: 0 0 10px;
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    & button {
+      width: 15px;
+      height: 15px;
+      background: #fff;
+      border-radius: 50%;
+      font-size: 0;
+      color: transparent;
+      opacity: 0.5;
+      &:focus {
+        outline: 0;
+      }
+    }
+    .slick-active button {
+      opacity: 1;
+    }
+    & li {
+      margin: 0px 5px;
+    }
+  }
+}
+
+.download {
+  margin: 90px 0px;
+  text-align: center;
+  // .download__title
+  &__title {
+    margin: 0px 0px 15px 0px;
+    color: #2d3033;
+    font-family: Raleway;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+  // .download__text
+  &__text {
+    margin: 0px 0px 35px 0px;
+    color: #2d3033;
+    font-family: Raleway;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+.burger {
+  display: none;
+  padding: 9px 2px;
+  cursor: pointer;
+  background: none;
+  &__item {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    font-size: 0;
+    color: transparent;
+
+    position: relative;
+    &:before,
+    &:after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      position: absolute;
+      left: 0;
+      z-index: 1;
+    }
+    &:before {
+      top: -8px;
+    }
+    &:after {
+      bottom: -8px;
+    }
+  }
+}

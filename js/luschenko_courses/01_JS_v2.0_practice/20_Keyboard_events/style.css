@@ -1,0 +1,93 @@
+.container {
+    width: 100%;
+}
+
+section {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #444;
+}
+
+.block {
+    width: 75px;
+    height: 75px;
+    margin: 25px;
+    border: 2px solid #333;
+}
+
+/* .active {
+    background: orange;
+} */
+
+.hide {
+    display: none;
+}
+
+.keyboard {
+    position: relative;
+    width: 100%;
+    height: 319px;
+    background: url('img/keyboard.jpg') left no-repeat;
+}
+
+.keyboard .line {
+    display: flex;
+    position: absolute;
+    height: 44px;
+    opacity: 0.5;
+}
+
+.keyboard .line div {
+    margin-right: 9px;
+    width: 46px;
+    height: 44px;
+}
+
+.keyboard .line .active {
+    background-color: red;
+    opacity: 0.5;
+}
+
+.line-one {
+    left: 60px;
+    top: 40px;
+}
+
+.line-two {
+    left: 88px;
+    top: 93px;
+}
+
+.line-three {
+    left: 747px;
+    top: 93px;
+    height: 99px !important;
+}
+
+.line-three div {
+    height: 99px !important;
+}
+
+.line-four {
+    left: 6px;
+    top: 201px;
+}
+
+.line-four div {
+    width: 59px !important;
+}
+
+.line-five {
+    left: 61px;
+    top: 254px;
+    height: 52px !important;
+}
+
+.line-five div {
+    height: 52px !important;
+}
+
+.line-five div:last-child {
+    margin-left: 69px;
+    width: 264px;
+}
