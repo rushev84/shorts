@@ -3,3 +3,10 @@ Inline a variable --- Ctrl+Alt+N
 
 Rename file --- Shift+F6
 Open the list of recent files --- Ctrl+E
+Import class --- Alt+Enter
+Search files --- Shift x 2
+
+Highlight line --- Ctrl+W
+Highlight multiple strings --- Alt+J
+Delete all includes of unused classes --- Ctrl+Alt+O
+Rename file in directory --- Shift+F6

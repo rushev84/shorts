@@ -1,0 +1,19 @@
+На ноуте HP - нажимаем ESC, заходим в биос, там ищем virtualization technology, ставим enabled
+
+Затем скачиваем Docker Desktop, устанавливаем.
+
+Запускаем PowerShell с правами администратора (правой кнопкой), пишем
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+Перезагрузка
+
+В PowerShell:
+wsl --set-default-version 2
+
+Запускаем - всё ок.
+
+Подробная видео-инструкция по установке Docker на Win10Home:
+https://www.youtube.com/watch?v=YH3sutAsxEM
+Инструкция по дальнейшей пляске с бубном, если проблемы с wsl:
+https://bv-dev.ru/ustanovka-dockerdoke-na-windows-10-reshenie-problem/
+

@@ -1,0 +1,22 @@
+php artisan tinker
+
+$user = new User;
+$user->name = 'JeffreyWay';
+$user->email = 'jeffrey@laracasts.com';
+$user->save();
+
+$user->name = 'JohnDoe';
+$user->save();
+
+User::find(1); // by id
+User::findOrFail(233);
+User::all(); // returns Collection
+
+$users = User::all();
+$users->pluck('name'); // returns new Collection consisting only of the names
+Equivalent to:
+$users->map(function($user) {return $user->name;});
+
+$users->first(); // JohnDoe
+or
+$users[0];
