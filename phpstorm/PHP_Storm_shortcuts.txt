@@ -10,3 +10,13 @@ Highlight line --- Ctrl+W
 Highlight multiple strings --- Alt+J
 Delete all includes of unused classes --- Ctrl+Alt+O
 Rename file in directory --- Shift+F6
+
+Закрыть строку точкой с запятой --- Ctrl+Shift+Enter
+Переименование со всеми вхождениями
+выделить директорию слева, зажать Shift+F6
+
+Смена строк --- Alt+Shift+Up/Down
+Убрать неиспользуемые подключения классов --- Ctrl+Alt+O
+Добавление класса --- Alt+Enter
+
+Автоматическое создание конструктора --- Alt+Insert

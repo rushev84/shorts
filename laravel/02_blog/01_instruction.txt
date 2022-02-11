@@ -1,0 +1,209 @@
+/// ------------------------------- Урок 0 ----------------------------------------
+
+bootstrapdash.com - сайт с шаблонами
+
+Создание проекта:
+composer create-project laravel/laravel projectname
+
+/// ------------------------------- Урок 1 ----------------------------------------
+
+Подключение бутстрапа:
+composer require laravel/ui
+php artisan ui bootstrap
+
+Подключение авторизации
+php artisan ui:auth
+
+Кухня фронтенда:
+npm install && npm run dev
+npm run dev
+
+Всё, что касается фронтенда, теперь лежит здесь:
+/js/app.js
+css/app.css
+
+Используем БД sqlite
+.env
+DB_CONNECTION=sqlite
+--- далее в видео инструкция ---
+
+/// ------------------------------- Урок 2 ----------------------------------------
+
+-m - для создания миграции
+php artisan make:model Post -m
+php artisan make:model Category -m
+php artisan make:model Tag -m
+php artisan make:model PostTag -m
+
+В миграцию постов добавляем:
+            $table->string('title');
+            $table->text('content');
+
+В миграцию категорий и тегов:
+$table->string('title');
+
+Посты и категории - отношение "один ко многим". У поста может быть только одна категория, но у категории может быть много постов. В миграцию постов добавляем:
+
+$table->unsignedBigInteger('category_id')->nullable();
+
+            $table->index('category_id', 'post_category_idx');
+            $table->foreign('category_id', 'post_category_fk')->on('categories')->references('id');
+
+
+В миграцию PostTags:
+            $table->index('post_id', 'post_tag_post_idx');
+            $table->index('tag_id', 'post_tag_tag_idx');
+
+            // FK
+            $table->foreign('post_id', 'post_tag_post_fk')->on('posts')->references('id');
+            $table->foreign('tag_id', 'post_tag_tag_fk')->on('tags')->references('id');
+
+/// ------------------------------- Урок 3 ----------------------------------------
+
+app->Providers->RouteServiceProvider - раскомментить строку
+    protected $namespace = 'App\\Http\\Controllers';
+
+Создаём контроллер
+php artisan make:controller Main/IndexController
+
+Везде используем однометодные контроллеры, т.е. при вызове его будет автоматически вызываться метод __invoke
+
+В web.php пишем
+Route::group(['namespace' => 'Main'], function () {
+    Route::get('/', 'IndexController');
+});
+
+В самом контроллере:
+class IndexController extends Controller
+{
+    public function __invoke()
+    {
+        return 'bbb';
+    }
+}
+
+Создаём во views директорию main
+В контроллере пишем:
+        return view('main.index');
+
+Создаём в layouts main.blade.php, копируем туда всё из blade.html
+Копируем папку assets в public
+
+Находим тег main в main.blade.php, вырезаем и вставляем его в index.blade.php.
+В этом же файле делаем:
+@extends('layouts.main')
+
+@section('content')
+...
+@endsection
+
+В main.blade.php после header:
+@yield('content')
+
+Добавляем в main.blade.php и index.blade.php везде хелпер asset(), чтобы путь к стилям, картинкам и т.д. искался на любой странице именно из папки assets.
+
+/// ------------------------------- Урок 4 ----------------------------------------
+
+Скачиваем zip AdminLTE.
+web.php:
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
+    Route::group(['namespace' => 'Main'], function () {
+        Route::get('/', 'IndexController');
+    });
+});
+
+Папку Main (с контроллером) - в папку Admin
+В IndexController меняем namespace:
+namespace App\Http\Controllers\Admin\Main;
+
+Во views создаём директорию admin, в неё копируем main и layouts. Из layouts убираем app.blade.php
+
+Из шаблона adminLTE index.html копируем всё в index.blade.php
+Оттуда же копируем папки plugins и dist в public
+
+Копируем всё из index.blade.php в main.blade.php.
+Находим content-wrapper в main.blade.php, переносим его в index.blade.php, обрамляем в @section('content'), добавляем @extends('admin.layouts.main')
+В main.blade.php добавляем @yield('content')
+
+В папке plugins оставляем только: bootstrap, daterangepicker, fontawesome-free, jquery, jquery-ui, moment, overlayScrollbars
+Комментим или удаляем неиспользуемые плагины в main.blade.php
+Внизу тоже:
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="dist/js/adminlte.js"></script>
+
+В <!-- Main Sidebar Container --> убираем brand logo - и всё, что внутри Sidebar, оставляем только div sidebar
+Из index.blade.php убираем Main row
+
+В main.blade.php удаляем из navbara ненужное
+
+/// ------------------------------- Урок 5 ----------------------------------------
+
+Реализуем CRUD для постов, категорий и тегов.
+Создаём директорию include в admin.
+Создаём в ней файл include.blade.php
+Из main.blade.php переносим Main Sidebar Container в include.blade.php, а на его месте в main.blade.php пишем
+@include
+
+Находим в вёрстке левый пункт "Gallery", добавляем в sidebar.blade.php
+
+В роутах добавляем
+    Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
+        Route::get('/', 'IndexController');
+    });
+
+В контроллерах копируем всю директорию Main, вставляем её в Admin, переименовывая в Category, меняем в контроллере namespace на Admin\Category.
+
+В папке admin копируем директорию main, переименовывая её в categories
+Открываем файл index.blade.php (в этой директории), в нём меняем:
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    Категории
+                </div>
+                <!-- /.row -->
+
+admin->layouts->main.blade.php
+Везде добавляем хелпер asset()
+
+/// ------------------------------- Урок 6 ----------------------------------------
+
+Добавляем в web.php имя роуту
+    Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
+        Route::get('/', 'IndexController')->name('category.index');
+    });
+
+views->admin->includes->sidebar.blade.php
+Добавляем хелепер роут
+<a href="{{ route('category.index') }}" class="nav-link">
+У нас появилась ссылка с кнопки "Категории" слева в админке
+
+views->admin->categories->index.blade.php
+Добавляем кнопку
+<div class="col-1">
+<a href="#" class="btn btn-block btn-primary">Добавить</a>
+</div>
+
+Добавляем в роут с категориями
+Route::get('/create', 'CreateController')->name('category.create');
+
+Controllers->Admin->Category создаём новый контроллер CreateCategory
+class CreateController extends Controller
+{
+    public function __invoke()
+    {
+        return view('admin.categories.create');
+    }
+}
+
+views->admin->categories
+Копируем index.blade.php, меняем имя на create.blade.php
+Там:
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-12">
+                        Добавление категории
+                    </div>
+
+                </div>
+                <!-- /.row -->
