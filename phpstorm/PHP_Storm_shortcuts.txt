@@ -1,7 +1,7 @@
 Declares a new variable and initializes it with the selected expression --- Ctrl+Alt+V
 Inline a variable --- Ctrl+Alt+N
 
-Rename file --- Shift+F6
+Переименовать файл --- Shift+F6
 Open the list of recent files --- Ctrl+E
 Import class --- Alt+Enter
 Search files --- Shift x 2
@@ -20,3 +20,5 @@ Rename file in directory --- Shift+F6
 Добавление класса --- Alt+Enter
 
 Автоматическое создание конструктора --- Alt+Insert
+
+Запустить код в консоли --- Ctrl+Shift+F10
