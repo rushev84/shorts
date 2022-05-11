@@ -1,0 +1,13 @@
+Всё начинается с файла index.html в папке public.
+В нём есть <div id="app"></div>, куда и рендерится всё приложение Vue, это происходит в файле main.js:
+createApp(App).use(store).use(router).mount('#app')
+
+Далее есть базовый компонент App.vue, в кот. в <router-view /> рендерится то, что зарегистрировано в router/index.js (HomeView, Login, Categories). Но нужно, чтобы у них была какая-то обёртка в виде layout, для этого созданы EmptyLayout и MainLayout. Страницы Login, Categories не знают, какой layout нужно грузить, поэтому задаём кастомное свойство в роутах:
+    meta: {layout: 'empty'} - для login
+    meta: {layout: 'main'} - для categories
+
+    В App.vue нужно создать компонент, кот. обернёт текущий роут в нужный layout. При этом компонент динамический, инициализирующийся с помощью вычисляемого свойства layout, кот. возвращает нужное имя layoutа с помощью this.$route.meta
+
+    ---------------
+
+В Sidebar нужно заменить все обычные ссылки на router-link для того, чтобы меню работало без перезагрузки страницы.

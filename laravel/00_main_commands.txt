@@ -1,0 +1,21 @@
+Установить проект:
+composer create-project laravel/laravel name_of_the_project 8.5.12
+
+Установить ui:
+composer require laravel/ui
+
+Bootstrap:
+php artisan ui bootstrap
+npm install && npm run dev
+npm run dev
+
+Создать модель и миграцию:
+php artisan make:model Post -m
+
+Перезапустить миграции (с удалением всех данных из БД):
+php artisan migrate:fresh
+
+
+
+
+

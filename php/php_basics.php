@@ -56,17 +56,19 @@ foreach ($arr as $key => $value) {
 // для простого массива - foreach($arr => $value)
 
 // сохранение состояния переменной при каждом новом вызове функции
-function click(){
+function click()
+{
     static $count;
     $count++;
     echo $count . '<br>';
 }
+
 click(); // 1
 click(); // 2
 click(); // 3
 
 // require - если не найдёт, то ошибка
-// include - есил не найдёт, то грузит дальше (если подключение не принципиально)
+// include - если не найдёт, то грузит дальше (если подключение не принципиально)
 
 // Работа с датой
 
@@ -181,7 +183,7 @@ echo '<br>';
 echo $_SERVER['HTTP_HOST']; // php-example.ru
 echo '<br>';
 
-echo $_SERVER['HTTP_HOST'].' - '.$_SERVER['REQUEST_URI'];
+echo $_SERVER['HTTP_HOST'] . ' - ' . $_SERVER['REQUEST_URI'];
 echo '<br>';
 
 echo $_SERVER['HTTP_USER_AGENT'];
@@ -202,8 +204,8 @@ $to = 'rushev@yandex.ru';
 $from = 'example@example.com';
 $subject = 'Тема сообщения';
 
-$subject = '=?utf-8?B?'.base64_encode($subject).'?=';
-$headers ="From: $from\r\nReply-to: $from\r\nContent-type:text/plain; charset=utf-8\r\n";
+$subject = '=?utf-8?B?' . base64_encode($subject) . '?=';
+$headers = "From: $from\r\nReply-to: $from\r\nContent-type:text/plain; charset=utf-8\r\n";
 
 mail($to, $subject, $message, $headers);
 
