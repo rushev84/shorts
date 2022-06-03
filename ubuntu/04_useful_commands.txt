@@ -1,2 +1,0 @@
-Настроить доступ к общей папке:
-sudo adduser user vboxsf

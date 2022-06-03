@@ -1,3 +1,0 @@
-composer create-project symfony/website-skeleton projectname
-
-php bin/console doctrine:database:create
